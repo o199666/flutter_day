@@ -26,13 +26,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //标题
 //      appBar: AppBar(
 //        title: Text('BottomNavigationBar Sample'),
-//      ),
+//        //标题样式
+//        textTheme: TextTheme(title: TextStyle(color: Colors.green)),
+//        backgroundColor: Colors.redAccent,
+//        ),
+      //内容
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+      //底部
       bottomNavigationBar: BottomNavigationBar(
+        //超过4个
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
