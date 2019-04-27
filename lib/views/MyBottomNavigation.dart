@@ -4,14 +4,14 @@ import 'package:flutter_day/views/pages/One.dart';
 import 'package:flutter_day/views/pages/Three.dart';
 import 'package:flutter_day/views/pages/Two.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class MyBottomNavigation extends StatefulWidget {
+  MyBottomNavigation({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyBottomNavigationState createState() => _MyBottomNavigationState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyBottomNavigationState extends State<MyBottomNavigation> {
   int _selectedIndex = 1;
   final _widgetOptions = [
     One(),
@@ -39,18 +39,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       //底部
       bottomNavigationBar: BottomNavigationBar(
+
         //超过4个
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.music_video), title: Text('音乐')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.business), title: Text('Business')),
+              icon: Icon(Icons.movie), title: Text('视频')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.school), title: Text('School')),
-          BottomNavigationBarItem(icon: Icon(Icons.cake), title: Text('four')),
+              icon: Icon(Icons.supervisor_account), title: Text('联系人')),
+          BottomNavigationBarItem(icon: Icon(Icons.supervisor_account), title: Text('朋友圈')),
         ],
         currentIndex: _selectedIndex,
-        fixedColor: Colors.deepPurple,
+        fixedColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );

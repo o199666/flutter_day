@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_day/views/HomePage.dart';
-import 'package:flutter_day/views/pages/MyHomePage.dart';
+import 'package:flutter_day/views/MyBottomNavigation.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
 
       ),
       //主页
-      home: MyHomePage(),
+      home: MyBottomNavigation(),
 //      home: MyBottomAppBar(),
     );
   }
