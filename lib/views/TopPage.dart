@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_day/views/MyDrawer.dart';
 import 'package:flutter_day/views/pages/item/Item_MusicList.dart';
 
 class TopPage extends StatefulWidget {
@@ -70,13 +71,16 @@ class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
           )),
       body: TabBarView(controller: _tabController, children: <Widget>[
         new ListView(
+          scrollDirection: Axis.vertical,
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(10),
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.red, Colors.lightBlueAccent[700]]),
+                    gradient: LinearGradient(colors: [
+                      Colors.lightBlue,
+                      Colors.lightBlueAccent[700]
+                    ]),
                     //背景渐变
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
@@ -123,9 +127,13 @@ class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
                           children: <Widget>[
                             OutlineButton(
                               onPressed: null,
-                              child: Text('开通会员',textAlign: TextAlign.center,style: TextStyle(color: Colors.red),),
+                              child: Text(
+                                '开通会员',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.red),
+                              ),
                               color: Colors.blue,
-                              borderSide:BorderSide(width: 2),
+                              borderSide: BorderSide(width: 2),
                               disabledBorderColor: Colors.red,
                             ),
                           ],
@@ -136,7 +144,6 @@ class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
                 ),
               ),
             ),
-
             Item_MusicList(),
             Item_MusicList(),
             Item_MusicList(),
@@ -166,62 +173,104 @@ class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
             Item_MusicList(),
           ],
         ),
-        new Center(child: new Text('22')),
+        //第二页
+        new ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            //轮播图
+            Container(
+              height: 170,
+              color: Colors.lightBlue,
+            ),
+            //分类
+            Container(
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(10),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                   color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    boxShadow: [
+                      //阴影
+                      BoxShadow(
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 10)
+                    ]),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Flex(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  direction: Axis.horizontal,
+                  children: <Widget>[
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(Icons.account_circle, color: Colors.green),
+                            Text('歌手')
+                          ],
+                        )),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Icon(Icons.account_circle, color: Colors.green),
+                          Text('排行')
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Icon(Icons.account_circle, color: Colors.green),
+                          Text('分类歌单')
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Icon(Icons.account_circle, color: Colors.green),
+                          Text('电台')
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Icon(Icons.account_circle, color: Colors.green),
+                          Text('一起听')
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                )
+              ),
+            ),
+            Container(
+              height: 100,
+              color: Colors.green,
+            ),
+            Container(
+              height: 100,
+              color: Colors.deepPurpleAccent,
+            ),
+            Container(
+              height: 100,
+              color: Colors.greenAccent,
+            ),
+            Container(
+              height: 100,
+              color: Colors.red,
+            ),
+          ],
+        ),
       ]),
     );
-  }
-}
-
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Drawer(
-        child: MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 38),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ClipOval(
-                      child: Image.network(
-                    'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4214474476,1941437198&fm=27&gp=0.jpg',
-                    width: 80,
-                  )),
-                ),
-                Text(
-                  'ASD',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                ListTile(
-                  leading: const Icon(Icons.add),
-                  title: const Text('Add account'),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.settings),
-                  title: const Text('Manage accounts'),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    ));
   }
 }
