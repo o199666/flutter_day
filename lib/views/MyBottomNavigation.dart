@@ -10,17 +10,13 @@ class MyBottomNavigation extends StatefulWidget {
   @override
   _MyBottomNavigationState createState() => _MyBottomNavigationState();
 }
-
 class _MyBottomNavigationState extends State<MyBottomNavigation> {
-  int _selectedIndex = 1;
-  final _widgetOptions = [
+  int _selectedIndex = 1;//声明选择的默认下标。1
+  final _widgetOptions = [//body集合，类是与Fragment
     One(),
     Two(),
     Three(),
     Four(),
-//    Text('Index 0: Home'),
-//    Text('Index 1: Business'),
-//    Text('Index 2: School'),
   ];
 
   @override
@@ -35,12 +31,12 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
 //        ),
       //内容
       body: Center(
+        //根据选择的_selectedIndex 切换不同的页面
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       //底部
       bottomNavigationBar: BottomNavigationBar(
-
-        //超过4个
+        //todo:超过4个要设置这个属性。
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.music_video), title: Text('音乐')),
@@ -48,11 +44,11 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
               icon: Icon(Icons.movie), title: Text('视频')),
           BottomNavigationBarItem(
               icon: Icon(Icons.supervisor_account), title: Text('联系人')),
-          BottomNavigationBarItem(icon: Icon(Icons.supervisor_account), title: Text('朋友圈')),
+          BottomNavigationBarItem(icon: Icon(Icons.camera), title: Text('朋友圈')),
         ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,//当前点击的Index值，
+        fixedColor: Colors.blue,//点击后的颜色
+        onTap: _onItemTapped,//监听
       ),
     );
   }
